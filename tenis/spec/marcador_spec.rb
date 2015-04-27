@@ -61,6 +61,17 @@ describe 'Marcador' do
       @marcador.jugador(:manco).puntos.value.should be :zero
 
     end
+
+    it 'y es su sexto game en el set, gana el set' do
+      6.times {
+        2.times {@marcador.gana_punto :manco}
+        4.times {@marcador.gana_punto :roger}
+      }
+
+      @marcador.jugador(:roger).set.should be 1
+      @marcador.jugador(:manco).set.should be 0
+    end
+
   end
 
   describe 'cuando un jugador gana un set' do
@@ -73,6 +84,17 @@ describe 'Marcador' do
 
       @marcador.jugador(:roger).puntos.value.should be :zero
       @marcador.jugador(:manco).puntos.value.should be :zero
+
+    end
+
+    it 'el game deve volver a (0,0)' do
+      6.times {
+        2.times {@marcador.gana_punto :manco}
+        4.times {@marcador.gana_punto :roger}
+      }
+
+      @marcador.jugador(:roger).game.should be 0
+      @marcador.jugador(:manco).game.should be 0
 
     end
   end
