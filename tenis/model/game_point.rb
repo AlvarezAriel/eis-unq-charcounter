@@ -1,3 +1,7 @@
+# Usar la progresión de 0-15-30-40 en realidad no aporta nada contra usar números y calcular la ventaja
+# con diferencia de dos. Pero de esta forma al menos era un poco más interesante.
+
+
 class GamePoint
   attr_accessor :advantage
 
