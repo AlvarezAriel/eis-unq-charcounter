@@ -4,4 +4,5 @@
 
 ### Ejercicios
 
- - [Char Counter](char_counter/Readme.md)
+ - [Kata Char Counter](char_counter/Readme.md)
+ - [kata Tenis](tenis/Readme.md)
