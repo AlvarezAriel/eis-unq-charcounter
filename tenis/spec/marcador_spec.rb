@@ -3,23 +3,34 @@ require_relative '../model/marcador.rb'
 
 describe 'Marcador' do
 
+  before(:each) do
+    @marcador = Marcador.new(:roger, :manco)
+  end
+
+
   describe 'al comenzar el partido' do
+
     it 'debe tener sus sets en (0,0)' do
-      (player_one_set, player_two_set) = Marcador.new.set
-      player_one_set.should be 0
-      player_two_set.should be 0
+      @marcador.jugador(:roger).set.should be 0
+      @marcador.jugador(:manco).set.should be 0
     end
 
     it 'debe tener sus games en (0,0)' do
-      (player_one_game, player_two_game) = Marcador.new.game
-      player_one_game.should be 0
-      player_two_game.should be 0
+      @marcador.jugador(:roger).game.should be 0
+      @marcador.jugador(:manco).game.should be 0
     end
 
     it 'debe tener sus puntos en (0,0)' do
-      (player_one_puntos, player_two_puntos) = Marcador.new.puntos
-      player_one_puntos.should be 0
-      player_two_puntos.should be 0
+      @marcador.jugador(:roger).puntos.value.should be :zero
+      @marcador.jugador(:manco).puntos.value.should be :zero
+    end
+
+  end
+
+  describe 'al anotarse un punto' do
+    it 'si el punto del jugador estaba en 0 debe pasar a 15' do
+      @marcador.gana_punto :manco
+      @marcador.jugador(:manco).puntos.value.should be :fifteen
     end
 
   end
