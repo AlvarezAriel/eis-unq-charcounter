@@ -97,6 +97,14 @@ describe 'Marcador' do
       @marcador.jugador(:manco).game.should be 0
 
     end
+
+    it 'y es su segundo set, entonces gana el match' do
+      (2*6).times {
+        2.times {@marcador.gana_punto :manco}
+        4.times {@marcador.gana_punto :roger}
+      }
+      @marcador.jugador(:roger).won_match?.should be true
+    end
   end
 
 end
