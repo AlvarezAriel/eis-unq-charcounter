@@ -64,6 +64,7 @@ class GamePoint
 
   def reset
     @current = :zero
+    @advantage = false
   end
 
   def value

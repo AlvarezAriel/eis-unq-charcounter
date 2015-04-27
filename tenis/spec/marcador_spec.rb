@@ -49,6 +49,18 @@ describe 'Marcador' do
       @marcador.jugador(:roger).game.should be 1
     end
 
+
+  end
+
+  describe 'cuando un jugador gana un game' do
+
+    it 'el puntaje deve volver a (0,0)' do
+      2.times {@marcador.gana_punto :manco}
+      4.times {@marcador.gana_punto :roger}
+      @marcador.jugador(:roger).puntos.value.should be :zero
+      @marcador.jugador(:manco).puntos.value.should be :zero
+
+    end
   end
 
 
