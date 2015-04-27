@@ -40,13 +40,16 @@ describe 'Marcador' do
     end
 
     it 'si el punto del jugador estaba en 30 debe pasar a 40' do
-      @marcador.gana_punto :manco
-      @marcador.gana_punto :manco
-      @marcador.gana_punto :manco
+      3.times {@marcador.gana_punto :manco}
       @marcador.jugador(:manco).puntos.value.should be :forty
     end
 
+    it 'si el punto del jugador estaba en 40 y el rival en menos de 40, debe ganar el game' do
+      4.times {@marcador.gana_punto :roger}
+      @marcador.jugador(:roger).game.should be 1
+    end
 
   end
+
 
 end
