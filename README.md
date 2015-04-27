@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AlvarezAriel/eis-unq-charcounter.svg?branch=master)](https://travis-ci.org/AlvarezAriel/eis-unq-charcounter)
+[![Build Status](https://travis-ci.org/AlvarezAriel/katas-eis.svg?branch=master)](https://travis-ci.org/AlvarezAriel/katas-eis)
 
 ## Katas de Elementos de Ingeniería en Software
 
