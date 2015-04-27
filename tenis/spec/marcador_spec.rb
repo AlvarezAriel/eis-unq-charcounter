@@ -49,6 +49,11 @@ describe 'Marcador' do
       @marcador.jugador(:roger).game.should be 1
     end
 
+    it 'si ambos jugadores tenian 40, el que anotó pasa a tener ventaja' do
+      3.times {@marcador.gana_punto :manco}
+      4.times {@marcador.gana_punto :roger}
+      @marcador.jugador(:roger).has_advantage?.should be true
+    end
 
   end
 

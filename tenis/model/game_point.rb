@@ -1,5 +1,6 @@
 class GamePoint
   attr_accessor :advantage
+
   def initialize
     @advantage = false
     @current = :zero
@@ -10,18 +11,17 @@ class GamePoint
     }
   end
 
-  def next
-    @current = @progression[@current]
-  end
+  def next; @current = @progression[@current] end
 
   def reset
     @current = :zero
     @advantage = false
   end
 
-  def value
-    @current
-  end
+  def value;  @current end
+
+  def add_advantage;    @advantage = true end
+  def remove_advantage; @advantage = false end
 end
 
 class Player
@@ -37,8 +37,12 @@ class Player
   end
 
   def inc_point
-    if puntos.value == :forty && rival.puntos.value != :forty
+    if has_40_points? && (!rival.has_40_points? || (has_advantage? && !rival.has_advantage?))
       won_game
+    elsif has_40_points? && rival.has_40_points? && rival.has_advantage?
+      rival.points.remove_advantage
+    elsif has_40_points? && rival.has_40_points?
+      puntos.add_advantage
     else
       puntos.next
     end
@@ -63,6 +67,10 @@ class Player
 
   def won_match?
     @won_match
+  end
+
+  def has_40_points?
+    puntos.value == :forty
   end
 
 end
