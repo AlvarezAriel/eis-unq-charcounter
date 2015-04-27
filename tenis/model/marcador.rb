@@ -21,9 +21,11 @@ end
 
 class Player
   attr_accessor :set, :game, :puntos, :rival
+  attr_reader :won_match
 
   def initialize
     (@set, @game, @puntos) = [0,0, GamePoint.new]
+    @won_match = false
   end
 
   def has_advantage?
@@ -42,6 +44,17 @@ class Player
     @game = @game + 1
     puntos.reset
     rival.puntos.reset
+    if @game == 6
+      won_set
+    end
+  end
+
+  def won_set
+    @game = 0
+    @set = @set+1
+    if @set == 2
+      @won_match = true
+    end
   end
 
 end

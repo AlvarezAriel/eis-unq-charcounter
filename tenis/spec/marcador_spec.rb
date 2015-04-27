@@ -63,5 +63,18 @@ describe 'Marcador' do
     end
   end
 
+  describe 'cuando un jugador gana un set' do
+
+    it 'el puntaje deve volver a (0,0)' do
+      6.times {
+        2.times {@marcador.gana_punto :manco}
+        4.times {@marcador.gana_punto :roger}
+      }
+
+      @marcador.jugador(:roger).puntos.value.should be :zero
+      @marcador.jugador(:manco).puntos.value.should be :zero
+
+    end
+  end
 
 end
