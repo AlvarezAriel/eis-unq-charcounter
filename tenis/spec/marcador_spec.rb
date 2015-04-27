@@ -35,12 +35,15 @@ describe 'Marcador' do
 
     it 'si el punto del jugador estaba en 15 debe pasar a 30' do
       @marcador.gana_punto :manco
-      @marcador.jugador(:manco).puntos.value.should be :fifteen
+      @marcador.gana_punto :manco
+      @marcador.jugador(:manco).puntos.value.should be :thirty
     end
 
     it 'si el punto del jugador estaba en 30 debe pasar a 40' do
       @marcador.gana_punto :manco
-      @marcador.jugador(:manco).puntos.value.should be :fifteen
+      @marcador.gana_punto :manco
+      @marcador.gana_punto :manco
+      @marcador.jugador(:manco).puntos.value.should be :forty
     end
 
 
