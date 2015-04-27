@@ -16,6 +16,11 @@ describe 'Marcador' do
       player_two_game.should be 0
     end
 
+    it 'debe tener sus puntos en (0,0)' do
+      (player_one_puntos, player_two_puntos) = Marcador.new.puntos
+      player_one_puntos.should be 0
+      player_two_puntos.should be 0
+    end
 
   end
 
