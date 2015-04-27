@@ -55,6 +55,16 @@ describe 'Marcador' do
       @marcador.jugador(:roger).has_advantage?.should be true
     end
 
+    it 'y el otro jugador tenia ventaja, se remueve la ventaja' do
+      3.times {@marcador.gana_punto :manco}
+      4.times {@marcador.gana_punto :roger}
+      @marcador.gana_punto :manco
+      @marcador.jugador(:roger).puntos.value.should be :forty
+      @marcador.jugador(:manco).puntos.value.should be :forty
+      @marcador.jugador(:roger).has_advantage?.should be false
+      @marcador.jugador(:manco).has_advantage?.should be false
+    end
+
   end
 
   describe 'cuando un jugador gana un game' do

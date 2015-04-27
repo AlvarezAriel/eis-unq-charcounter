@@ -37,10 +37,10 @@ class Player
   end
 
   def inc_point
-    if has_40_points? && (!rival.has_40_points? || (has_advantage? && !rival.has_advantage?))
+    if has_40_points? && (!rival.has_40_points? || has_advantage?)
       won_game
     elsif has_40_points? && rival.has_40_points? && rival.has_advantage?
-      rival.points.remove_advantage
+      rival.puntos.remove_advantage
     elsif has_40_points? && rival.has_40_points?
       puntos.add_advantage
     else
