@@ -5,18 +5,22 @@ class Board
     @ships = []
   end
 
-  def add_ship_at(x,y)
-    new_ship = Ship.new(x,y)
-
+  def add_ship(new_ship)
     raise 'Position out of board' unless  new_ship.positions.all? {|(px,py)| is_in_board?(px,py)}
 
-    @ships.push(Ship.new(x,y))
+    @ships.push(new_ship)
   end
+
+  def add_ship_at(x,y) add_ship Ship.new(x,y) end
 
   def is_in_board?(x,y) x >= 0 && y >= 0 && y < @size[1] && x < @size[0] end
 
   def is_water_at?(x,y) @ships.none? {|ship| ship.occupies?(x,y)} end
 
+  def shoot_at(x,y)
+    @ships.each {|ship|
+      ship.on_shoot(x,y){ |section| section.hit }}
+  end
 end
 
 # The specified Ship is two positions long and can only be
@@ -32,8 +36,10 @@ class Ship
     ]
   end
 
-  def shoot_on(x,y)
-
+  def on_shoot(x,y, &block)
+    if self.occupies?(x,y)
+      block.call(@positions.select { |pos| pos.is [x,y] }.first)
+    end
   end
 
   def occupies?(x,y) @positions.any? { |pos| pos.is [x,y] } end

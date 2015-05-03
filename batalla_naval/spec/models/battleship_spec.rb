@@ -30,8 +30,11 @@ describe 'Battleship' do
   end
 
   it 'should get hit if bombed on it' do
-    @board.add_ship_at(1,1)
+    @ship = Ship.new(1,1)
+    @board.add_ship(@ship)
+    @board.shoot_at(1,2)
 
+    expect(@ship.is_hit?).to be true
   end
 
 end
