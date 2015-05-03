@@ -1,11 +1,11 @@
 require_relative '../../app/models/Board.rb'
 
 Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |width, height|
-  @board = Board.new arg1, arg2
+  @board = Board.new width, height
 end
 
 Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @board
+  @board.add_ship_at x,y
 end
 
 Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
@@ -13,11 +13,11 @@ Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
 end
 
 And(/^a large ship in position: "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  pending
+  @board.add_ship_at(x,y)
 end
 
 Given(/^I shoot to position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  pending
+  @shoot_position = [x,y]
 end
 
 Then(/^I get hit$/) do
@@ -25,9 +25,14 @@ Then(/^I get hit$/) do
 end
 
 Then(/^I get water$/) do
-  pending
+  (x,y)=@shoot_position
+  @board.is_water_at?(x,y)
 end
 
 Then(/^I get sink$/) do
   pending
+end
+
+Transform /^(-?\d+)$/ do |number|
+  number.to_i
 end
