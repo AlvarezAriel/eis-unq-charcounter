@@ -5,7 +5,8 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |width, height|
 end
 
 Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @board.add_ship_at x,y
+  @ship = Ship.new(x,y)
+  @board.add_ship @ship
 end
 
 Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
@@ -18,19 +19,19 @@ end
 
 Given(/^I shoot to position "([0-9]+?):([0-9]+?)"$/) do |x,y|
   @shoot_position = [x,y]
+  @board.shoot_at(x,y)
 end
 
 Then(/^I get hit$/) do
-  pending
+  @ship.is_hit?.should be true
 end
 
 Then(/^I get water$/) do
-  (x,y)=@shoot_position
-  @board.is_water_at?(x,y)
+  @board.is_water_at?(@shoot_position[0], @shoot_position[1]).should be true
 end
 
 Then(/^I get sink$/) do
-  pending
+  @ship.is_sink?.should be true
 end
 
 Transform /^(-?\d+)$/ do |number|
