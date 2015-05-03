@@ -11,8 +11,6 @@ class Board
     @ships.push(new_ship)
   end
 
-  def add_ship_at(x,y) add_ship Ship.new(x,y) end
-
   def is_in_board?(x,y) x >= 0 && y >= 0 && y < @size[1] && x < @size[0] end
 
   def is_water_at?(x,y) @ships.none? {|ship| ship.occupies?(x,y)} end
@@ -27,13 +25,18 @@ end
 # vertically aligned.
 class Ship
 
+  def self.large_at(x,y)
+    Ship.new([[x,y], [x,y+1]])
+  end
+
+  def self.small_at(x,y)
+    Ship.new([[x,y]])
+  end
+
   def positions; @positions end
 
-  def initialize(from_x,from_y)
-    @positions = [
-        ShipBlock.new([from_x,from_y]),
-        ShipBlock.new([from_x,from_y+1])
-    ]
+  def initialize(positions)
+    @positions = positions.collect { |pos| ShipBlock.new(pos)}
   end
 
   def on_shoot(x,y, &block)

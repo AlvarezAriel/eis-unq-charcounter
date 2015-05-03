@@ -5,7 +5,7 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |width, height|
 end
 
 Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @ship = Ship.new(x,y)
+  @ship = Ship.small_at(x,y)
   @board.add_ship @ship
 end
 
@@ -14,7 +14,8 @@ Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
 end
 
 And(/^a large ship in position: "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @board.add_ship_at(x,y)
+  @ship = Ship.large_at(x, y)
+  @board.add_ship @ship
 end
 
 Given(/^I shoot to position "([0-9]+?):([0-9]+?)"$/) do |x,y|

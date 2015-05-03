@@ -23,14 +23,14 @@ describe 'Battleship' do
     end
 
     it 'should not have water on 1:1 if a ship is in 1:1' do
-      @board.add_ship_at(1,1)
+      @board.add_ship(Ship.small_at(1,1))
       expect(@board.is_water_at?(1,1)).to be false
     end
 
   end
 
   it 'should get hit if bombed on it' do
-    @ship = Ship.new(1,1)
+    @ship = Ship.large_at(1,1)
     @board.add_ship(@ship)
     @board.shoot_at(1,2)
 
@@ -38,11 +38,20 @@ describe 'Battleship' do
   end
 
 
-  it 'should sink if bombed on all its sections' do
-    @ship = Ship.new(1,1)
+  it 'a large one should sink if bombed on all its sections' do
+    @ship = Ship.large_at(1,1)
     @board.add_ship(@ship)
     @board.shoot_at(1,1)
     @board.shoot_at(1,2)
+
+    expect(@ship.is_sink?).to be true
+  end
+
+
+  it 'a small one should sink if bombed on all its sections' do
+    @ship = Ship.small_at(1,1)
+    @board.add_ship(@ship)
+    @board.shoot_at(1,1)
 
     expect(@ship.is_sink?).to be true
   end
