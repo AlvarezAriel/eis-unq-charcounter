@@ -25,8 +25,28 @@ class Ship
 
   def positions; @positions end
 
-  def initialize(from_x,from_y) @positions = [ [from_x,from_y], [from_x,from_y+1] ] end
+  def initialize(from_x,from_y)
+    @positions = [
+        ShipBlock.new([from_x,from_y]),
+        ShipBlock.new([from_x,from_y+1])
+    ]
+  end
 
   def occupies?(x,y) @positions.any? { |pos| pos == [x,y] } end
+
+  def is_hit?; @positions.any? {|p| p.is_hit?} end
+
+  def is_sink?; @positions.all? {|p| p.is_hit?} end
+
+end
+
+class ShipBlock
+  def initialize(pos)
+    @pos = pos
+    @is_hit = false
+  end
+
+  def hit; @is_hit = true end
+  def is_hit?; @is_hit end
 
 end
