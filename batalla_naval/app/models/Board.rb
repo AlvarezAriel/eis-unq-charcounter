@@ -32,7 +32,11 @@ class Ship
     ]
   end
 
-  def occupies?(x,y) @positions.any? { |pos| pos == [x,y] } end
+  def shoot_on(x,y)
+
+  end
+
+  def occupies?(x,y) @positions.any? { |pos| pos.is [x,y] } end
 
   def is_hit?; @positions.any? {|p| p.is_hit?} end
 
@@ -46,7 +50,9 @@ class ShipBlock
     @is_hit = false
   end
 
-  def hit; @is_hit = true end
-  def is_hit?; @is_hit end
+  def is(p);    @pos == p end
+  def hit;      @is_hit = true end
+  def is_hit?;  @is_hit end
 
+  def method_missing(m, *args, &block); @pos.send(m, *args, &block) end
 end

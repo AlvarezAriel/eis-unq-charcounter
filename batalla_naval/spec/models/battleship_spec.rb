@@ -28,4 +28,10 @@ describe 'Battleship' do
     end
 
   end
+
+  it 'should get hit if bombed on it' do
+    @board.add_ship_at(1,1)
+
+  end
+
 end
