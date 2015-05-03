@@ -37,4 +37,13 @@ describe 'Battleship' do
     expect(@ship.is_hit?).to be true
   end
 
+
+  it 'should sink if bombed on all its sections' do
+    @ship = Ship.new(1,1)
+    @board.add_ship(@ship)
+    @board.shoot_at(1,1)
+    @board.shoot_at(1,2)
+
+    expect(@ship.is_sink?).to be true
+  end
 end
