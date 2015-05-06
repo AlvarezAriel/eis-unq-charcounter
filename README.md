@@ -6,4 +6,4 @@
 
  - [Kata Char Counter](char_counter/Readme.md)
  - [kata Tenis](tenis/Readme.md)
- - [kata Batalla Naval](batalla_naval/Readme.md)
+ - [kata Batalla Naval](batalla_naval/README.md)
