@@ -6,7 +6,8 @@ class Board
   end
 
   def add_ship(new_ship)
-    raise 'Position out of board' unless  new_ship.positions.all? {|(px,py)| is_in_board?(px,py)}
+    raise OutOfBoardException unless  new_ship.positions.all? {|(px,py)| is_in_board?(px,py)}
+    raise PositionNotEmptyException unless  new_ship.positions.all? {|(px,py)| is_water_at?(px,py)}
 
     @ships.push(new_ship)
   end
@@ -21,8 +22,7 @@ class Board
   end
 end
 
-# The specified Ship is two positions long and can only be
-# vertically aligned.
+
 class Ship
 
   def self.large_at(x,y)
@@ -41,11 +41,11 @@ class Ship
 
   def on_shoot(x,y, &block)
     if self.occupies?(x,y)
-      block.call(@positions.select { |pos| pos.is [x,y] }.first)
+      block.call(@positions.select { |pos| pos == [x,y] }.first)
     end
   end
 
-  def occupies?(x,y) @positions.any? { |pos| pos.is [x,y] } end
+  def occupies?(x,y) @positions.any? { |pos| pos ==[x,y] } end
 
   def is_hit?; @positions.any? {|p| p.is_hit?} end
 
@@ -53,15 +53,18 @@ class Ship
 
 end
 
-class ShipBlock
+class ShipBlock < Array
   def initialize(pos)
-    @pos = pos
+    super(pos)
     @is_hit = false
   end
 
-  def is(p);    @pos == p end
   def hit;      @is_hit = true end
   def is_hit?;  @is_hit end
+end
 
-  def method_missing(m, *args, &block); @pos.send(m, *args, &block) end
+class OutOfBoardException < StandardError
+end
+
+class PositionNotEmptyException < StandardError
 end
