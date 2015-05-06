@@ -13,11 +13,11 @@ Given(/^(?:I create )?a (large|small) ship in position "([0-9]+):([0-9]+)"$/) do
   end
 end
 
-Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
+Then(/^position "([0-9]+):([0-9]+)" is not empty$/) do |x,y|
   @board.is_water_at?(x,y).should be false
 end
 
-Given(/^I shoot to position "([0-9]+?):([0-9]+?)"$/) do |x,y|
+Given(/^I shoot to position "([0-9]+):([0-9]+)"$/) do |x,y|
   @shoot_position = [x,y]
   @board.shoot_at(x,y)
 end
