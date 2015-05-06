@@ -38,3 +38,7 @@ end
 Transform /^(-?\d+)$/ do |number|
   number.to_i
 end
+
+Then(/^an error should be thrown$/) do
+  pending
+end
