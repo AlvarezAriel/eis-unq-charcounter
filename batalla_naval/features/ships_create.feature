@@ -3,7 +3,6 @@ Feature: Ships create
   Background:
     Given a board with dimensions "5" x "5"
 
-  @wip
   Scenario: Create a small ship out of the board
     When I create a small ship in position "6:6"
     Then an error should be thrown

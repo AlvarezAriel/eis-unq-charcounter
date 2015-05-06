@@ -6,7 +6,12 @@ end
 
 Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
   @ship = Ship.small_at(x,y)
-  @board.add_ship @ship
+  begin
+    @board.add_ship @ship
+  rescue => some_error
+    @error = some_error
+  end
+
 end
 
 Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
@@ -40,5 +45,5 @@ Transform /^(-?\d+)$/ do |number|
 end
 
 Then(/^an error should be thrown$/) do
-  pending
+  @error.should_not be_nil
 end
