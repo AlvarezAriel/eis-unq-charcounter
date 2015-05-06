@@ -18,15 +18,29 @@ describe 'Battleship' do
 
   describe 'when using a 5x5 board' do
 
-    it 'should have water on 1:1' do
+    it 'should have water on (1,1)' do
       expect(@board.is_water_at?(1,1)).to be true
     end
 
-    it 'should not have water on 1:1 if a ship is in 1:1' do
+    it 'should not have water on 1:1 if a ship is in (1,1)' do
       @board.add_ship(Ship.small_at(1,1))
       expect(@board.is_water_at?(1,1)).to be false
     end
 
+    it 'should raise OutOfBoardException if a ship is added on (6,6)' do
+      expect{ @board.add_ship(Ship.small_at(6,6)) }.to raise_error(OutOfBoardException)
+    end
+
+    it 'should raise OutOfBoardException if a large ship is added on (4,4)' do
+      expect{ @board.add_ship(Ship.large_at(4,4)) }.to raise_error(OutOfBoardException)
+    end
+
+    it 'should raise PositionNotEmptyException if a large ship is added over another ship' do
+      expect{
+        @board.add_ship(Ship.large_at(2,2))
+        @board.add_ship(Ship.large_at(2,2))
+      }.to raise_error(PositionNotEmptyException)
+    end
   end
 
   it 'should get hit if bombed on it' do
@@ -55,4 +69,5 @@ describe 'Battleship' do
 
     expect(@ship.is_sink?).to be true
   end
+
 end
