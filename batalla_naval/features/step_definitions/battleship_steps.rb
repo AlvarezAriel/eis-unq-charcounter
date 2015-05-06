@@ -4,18 +4,8 @@ Given(/^a board with dimensions "(.*?)" x "(.*?)"$/) do |width, height|
   @board = Board.new width, height
 end
 
-Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @ship = Ship.small_at(x,y)
-  begin
-    @board.add_ship @ship
-  rescue => some_error
-    @error = some_error
-  end
-
-end
-
-Given(/^(?:I create )?a large ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
-  @ship = Ship.large_at(x,y)
+Given(/^(?:I create )?a (large|small) ship in position "([0-9]+?):([0-9]+?)"$/) do |ship_type, x,y|
+  @ship = Ship.send("#{ship_type}_at", x ,y)
   begin
     @board.add_ship @ship
   rescue => some_error
