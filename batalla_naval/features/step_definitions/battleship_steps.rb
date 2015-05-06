@@ -14,11 +14,20 @@ Given(/^I create a small ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
 
 end
 
+Given(/^(?:I create )?a large ship in position "([0-9]+?):([0-9]+?)"$/) do |x,y|
+  @ship = Ship.large_at(x,y)
+  begin
+    @board.add_ship @ship
+  rescue => some_error
+    @error = some_error
+  end
+end
+
 Then(/^position "([0-9]+?):([0-9]+?)" is not empty$/) do |x,y|
   @board.is_water_at?(x,y).should be false
 end
 
-And(/^a large ship in position: "([0-9]+?):([0-9]+?)"$/) do |x,y|
+And(/^I create a large ship in position: "([0-9]+?):([0-9]+?)"$/) do |x,y|
   @ship = Ship.large_at(x, y)
   @board.add_ship @ship
 end

@@ -7,6 +7,10 @@ Feature: Ships create
     When I create a small ship in position "6:6"
     Then an error should be thrown
 
+  Scenario: Create a large ship on the limit of the board
+    When I create a large ship in position "4:4"
+    Then an error should be thrown
+
   Scenario: Create a small ship over another ship
     When I create a small ship in position "3:3"
     And  I create a small ship in position "3:3"
