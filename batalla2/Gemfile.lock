@@ -69,6 +69,7 @@ GEM
     multi_test (0.1.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    oj (2.12.8)
     padrino (0.11.2)
       padrino-admin (= 0.11.2)
       padrino-cache (= 0.11.2)
@@ -178,6 +179,7 @@ DEPENDENCIES
   erubis (~> 2.7.0)
   guard
   guard-rspec
+  oj
   padrino (= 0.11.2)
   padrino-angularjs
   padrino-sprockets
