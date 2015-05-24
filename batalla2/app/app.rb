@@ -1,7 +1,19 @@
+require 'sprockets'
+
 module Battleship
+
+
   class App < Padrino::Application
     register Padrino::Rendering
     register Padrino::Helpers
+
+    register Padrino::Sprockets
+    sprockets :paths => Padrino::Angularjs.assets_path
+    register Padrino::Sprockets
+
+    require 'sprockets'
+    register Padrino::Sprockets
+    sprockets
 
     enable :sessions
     

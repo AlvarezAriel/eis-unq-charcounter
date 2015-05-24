@@ -4,7 +4,9 @@ ruby '2.2.0'
 gem 'thin' # or mongrel
 gem 'rake'
 gem 'slim'
-
+gem 'padrino-angularjs'
+gem 'padrino-sprockets'
+gem 'coffee-script'
 
 gem 'cucumber'
 gem 'capybara'

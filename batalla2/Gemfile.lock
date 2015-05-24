@@ -19,6 +19,10 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     cucumber (1.3.19)
       builder (>= 2.1.2)
@@ -31,6 +35,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.7)
+    execjs (2.5.2)
     ffi (1.9.6)
     formatador (0.2.5)
     gherkin (2.12.2)
@@ -74,6 +79,7 @@ GEM
     padrino-admin (0.11.2)
       padrino-core (= 0.11.2)
       padrino-helpers (= 0.11.2)
+    padrino-angularjs (0.0.1)
     padrino-cache (0.11.2)
       padrino-core (= 0.11.2)
       padrino-helpers (= 0.11.2)
@@ -93,6 +99,8 @@ GEM
     padrino-mailer (0.11.2)
       mail (~> 2.5.3)
       padrino-core (= 0.11.2)
+    padrino-sprockets (0.0.3)
+      sprockets
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -138,6 +146,8 @@ GEM
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
+    sprockets (3.0.3)
+      rack (~> 1.0)
     temple (0.7.5)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
@@ -163,11 +173,14 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
+  coffee-script
   cucumber
   erubis (~> 2.7.0)
   guard
   guard-rspec
   padrino (= 0.11.2)
+  padrino-angularjs
+  padrino-sprockets
   rake
   rspec
   rspec_junit_formatter
