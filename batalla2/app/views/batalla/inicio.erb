@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+    <meta charset="utf-8">
+	</head>
+	<body>
+
+	<h1>Hola</h1>
+
+	<p>El parametro nombre vale: <%= @nombre %></p>
+	
+
+	<form method="POST" action="mipagina">
+		 <%= csrf_token_field %>
+		 Establecer nuevo valor para nombre:
+		<input type="text" name="nombre" />
+		<input type="submit" value="enviar" id="boton_enviar"/>
+	</form>
+
+	</body>
+</html>
