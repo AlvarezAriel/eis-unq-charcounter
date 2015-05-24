@@ -1,5 +1,7 @@
 class Board
   attr_reader :size
+  attr_reader :ships
+
   def initialize(width,height)
     @size = [width,height]
     @ships = []
