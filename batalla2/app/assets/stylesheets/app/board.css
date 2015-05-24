@@ -1,0 +1,6 @@
+.board td, .board td  {
+    height: 30px;
+    width: 30px;
+    background-color: #9fe9f6;
+    border: solid #FFFFFF 1px;
+}

@@ -9,4 +9,5 @@
  *= require bootstrap
  *= require bootstrap-responsive
  *= require site
+ *= require_tree .
 */

@@ -10,7 +10,7 @@
 <div ng-app="batalla2" ng-controller="boardCtrl">
 
   <input type="number" ng-model="boardSize">
-  <table>
+  <table class="board">
     <tr ng-repeat="row in rows()">
       <td ng-repeat="column in columns()">({{column}},{{row}})</td>
     </tr>
