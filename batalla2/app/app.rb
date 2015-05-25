@@ -41,6 +41,8 @@ module Battleship
       Oj.dump board
     end
 
+    private
+
     def board_action(&block)
       position = JSON.parse request.body.read
       block.call(position[0].to_i,position[1].to_i)

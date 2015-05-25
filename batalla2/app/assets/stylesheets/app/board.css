@@ -1,6 +1,27 @@
-.board td, .board td  {
+.board td {
     height: 30px;
     width: 30px;
-    background-color: #9fe9f6;
+    background-color: #66cbf6;
     border: solid #FFFFFF 1px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 11px;
+    cursor: pointer;
 }
+
+.board td:hover {
+    opacity: 0.7;
+}
+
+td.ship {
+    background-color: green;
+}
+
+td.hit {
+    background-color: orange;
+}
+
+td.sink {
+    background-color: red;
+}
+

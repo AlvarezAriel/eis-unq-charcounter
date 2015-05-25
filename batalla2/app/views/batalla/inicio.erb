@@ -10,15 +10,20 @@
 <div ng-app="batalla2" ng-controller="boardCtrl">
 
   <table class="board">
-    <tr ng-repeat="row in rows()">
-      <td ng-repeat="column in columns()" ng-click="cellClicked(column,row)">({{column}},{{row}})</td>
+    <tr ng-repeat="row in game.board">
+      <td ng-repeat="cell in row"
+          ng-click="cellClicked(cell.x,cell.y)"
+          ng-class="{ship: cell.is_ship, hit: cell.is_hit, sink: cell.is_sink}"
+      >
+        {{cell.x}};{{cell.y}}
+      </td>
     </tr>
   </table>
 
   <select ng-model="action" convert-to-number>
     <option value="shoot">Shoot</option>
-    <option value="small_ship">New Small Ship</option>
-    <option value="long_ship">New Large Ship</option>
+    <option value="small_ship">Put Small Ship</option>
+    <option value="long_ship">Put Large Ship</option>
   </select>
 </div>
 
