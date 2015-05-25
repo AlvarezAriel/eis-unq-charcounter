@@ -11,9 +11,15 @@
 
   <table class="board">
     <tr ng-repeat="row in rows()">
-      <td ng-repeat="column in columns()">({{column}},{{row}})</td>
+      <td ng-repeat="column in columns()" ng-click="cellClicked(column,row)">({{column}},{{row}})</td>
     </tr>
   </table>
+
+  <select ng-model="action" convert-to-number>
+    <option value="shoot">Shoot</option>
+    <option value="small_ship">New Small Ship</option>
+    <option value="long_ship">New Large Ship</option>
+  </select>
 </div>
 
 </body>
