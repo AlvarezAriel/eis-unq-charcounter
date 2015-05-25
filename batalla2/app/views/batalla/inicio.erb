@@ -14,6 +14,7 @@
       <td ng-repeat="cell in row"
           ng-click="cellClicked(cell.x,cell.y)"
           ng-class="{ship: cell.is_ship, hit: cell.is_hit, sink: cell.is_sink}"
+          class="cell_{{cell.x}}_{{cell.y}}"
       >
         {{cell.x}};{{cell.y}}
       </td>
