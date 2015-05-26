@@ -10,6 +10,8 @@ gem 'coffee-script'
 
 gem 'cucumber'
 gem 'capybara'
+gem 'poltergeist'
+gem 'capybara-angular'
 gem 'rspec_junit_formatter'
 gem 'rspec'
 gem 'simplecov', "0.8.0.pre"

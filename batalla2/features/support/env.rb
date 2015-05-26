@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + "/../../config/boot")
 require_relative '../../app/app.rb'
 
 require 'capybara/cucumber'
+require 'capybara/poltergeist'
 require 'rspec/expectations'
 
-#require 'simplecov'
 require 'simplecov'
 SimpleCov.start do
   root(File.join(File.dirname(__FILE__), '..','..'))
@@ -19,6 +19,11 @@ SimpleCov.start do
   add_group "Helpers", "app/helpers"
 end
 
+Capybara.javascript_driver = :poltergeist
+Capybara.default_driver = :poltergeist
+Capybara.app = Rack::Directory.new('spec/public')
+Capybara.default_wait_time = 2
+Capybara::Angular.default_wait_time = 10
 
-#Capybara.default_driver = :selenium
 Capybara.app = Battleship::App.tap { |app|  }
+Capybara.ignore_hidden_elements = false
