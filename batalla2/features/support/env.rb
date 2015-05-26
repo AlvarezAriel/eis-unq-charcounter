@@ -14,7 +14,7 @@ SimpleCov.start do
   add_filter '/admin/'
   add_filter '/db/'
   add_filter '/config/'
-  add_group "Models", "app/models"
+  add_group "Models", "../batalla_naval/app/models"
   add_group "Controllers", "app/controllers"
   add_group "Helpers", "app/helpers"
 end
