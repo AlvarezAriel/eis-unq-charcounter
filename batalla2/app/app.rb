@@ -1,3 +1,4 @@
+require_relative '../../batalla_naval/app/models/Board'
 require 'json'
 require 'oj'
 
@@ -44,10 +45,15 @@ module Battleship
     private
 
     def board_action(&block)
-      position = JSON.parse request.body.read
-      block.call(position[0].to_i,position[1].to_i)
       content_type :json
-      Oj.dump board
+      begin
+        position = JSON.parse request.body.read
+        block.call(position[0].to_i,position[1].to_i)
+        Oj.dump board
+      rescue StandardError => e
+        status 500
+        { :error => e.class}.to_json
+      end
     end
 
     def board

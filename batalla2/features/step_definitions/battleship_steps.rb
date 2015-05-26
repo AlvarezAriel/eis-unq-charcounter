@@ -29,7 +29,7 @@ Then(/^I get water$/) do
 end
 
 Then(/^an error should be thrown$/) do
-  @error.should_not be_nil
+  find('#error-text').text.should eq 'Invalid Action'
 end
 
 def get_cell(x, y)
