@@ -25,3 +25,18 @@ td.sink {
     background-color: red;
 }
 
+body{
+    height: 100%;
+    background: url("/images/tile.png") repeat;
+}
+
+#board-container {
+    padding: 50px;
+    background-color: #FCEFB2;
+    border-radius: 8px;
+    -webkit-box-shadow: -7px 8px 0px 1px rgba(199,116,72,1);
+    -moz-box-shadow: -7px 8px 0px 1px rgba(199,116,72,1);
+    box-shadow: -7px 8px 0px 1px rgba(199,116,72,1);
+}
+
+/*shadow c77448*/

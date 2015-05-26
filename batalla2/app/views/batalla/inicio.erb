@@ -5,29 +5,32 @@
   <%= javascript_include_tag '/assets/application' %>
   <%= stylesheet_link_tag '/assets/application' %>
 </head>
-<body>
+<body class="container-fluid">
 
-<div ng-app="batalla2" ng-controller="boardCtrl">
+<div id="board-container" ng-app="batalla2" ng-controller="boardCtrl" class="row">
 
-  <table class="board">
-    <tr ng-repeat="row in game.board">
-      <td ng-repeat="cell in row"
-          ng-click="cellClicked(cell.x,cell.y)"
-          ng-class="{ship: cell.is_ship, hit: cell.is_hit, sink: cell.is_sink}"
-          id="cell-{{cell.x}}-{{cell.y}}"
-      >
-        {{cell.x}};{{cell.y}}
-      </td>
-    </tr>
-  </table>
+  <div class="col-md-8">
+    <table class="board">
+      <tr ng-repeat="row in game.board">
+        <td ng-repeat="cell in row"
+            ng-click="cellClicked(cell.x,cell.y)"
+            ng-class="{ship: cell.is_ship, hit: cell.is_hit, sink: cell.is_sink}"
+            id="cell-{{cell.x}}-{{cell.y}}"
+        >
+          {{cell.x}};{{cell.y}}
+        </td>
+      </tr>
+    </table>
+  </div>
 
-  <select id="action_selector" ng-model="action" convert-to-number>
-    <option value="shoot">Shoot</option>
-    <option value="small_ship">Put small ship</option>
-    <option value="long_ship">Put large ship</option>
-  </select>
-
-  <p id="error-text" class="bg-danger" ng-show="error">{{error}}</p>
+  <div class="col-md-4">
+    <select id="action_selector" ng-model="action" convert-to-number>
+      <option value="shoot">Shoot</option>
+      <option value="small_ship">Put small ship</option>
+      <option value="long_ship">Put large ship</option>
+    </select>
+    <p id="error-text" class="bg-danger" ng-show="error">{{error}}</p>
+  </div>
 
 </div>
 
