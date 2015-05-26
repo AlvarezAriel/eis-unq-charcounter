@@ -6,6 +6,8 @@
   - Padrino
   - Capybara
 
+![alt text](kata_batalla_naval_screenshot.png "Logo Title Text 1")
+
 ### Requerimientos
 
         Feature: Ships create
