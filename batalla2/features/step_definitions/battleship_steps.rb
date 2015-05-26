@@ -25,7 +25,7 @@ Then(/^I get (hit|sink)$/) do |status|
 end
 
 Then(/^I get water$/) do
-  cell_includes_class 'ship' .should be false
+  (cell_includes_class 'ship').should be false
 end
 
 Then(/^an error should be thrown$/) do
