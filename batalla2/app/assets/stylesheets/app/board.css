@@ -1,6 +1,6 @@
 .board td {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     background-color: #66cbf6;
     border: solid #FFFFFF 1px;
     text-align: center;
@@ -30,8 +30,28 @@ body{
     background: url("/images/tile.png") repeat;
 }
 
+#actions-container{
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+#board-container table {
+    margin: 0 auto;
+}
+
+#board-container h2 {
+    border-bottom: solid 2px;
+    padding: 10px;
+    margin-top: -20px;
+}
+
 #board-container {
     padding: 50px;
+    margin: 70px;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(143, 77, 57);
     background-color: #FCEFB2;
     border-radius: 8px;
     -webkit-box-shadow: -7px 8px 0px 1px rgba(199,116,72,1);
@@ -39,4 +59,29 @@ body{
     box-shadow: -7px 8px 0px 1px rgba(199,116,72,1);
 }
 
-/*shadow c77448*/
+select {
+    width: 100%;
+    background: #77c299 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/></svg>") no-repeat right 10px top 15px;
+    background-size: 16px 16px;
+    color:white;
+    padding:12px;
+    font-family: arial, tahoma, serif;
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -webkit-appearance: none;
+    border:0;
+    outline:0;
+    -webkit-transition:0.3s ease all;
+    -moz-transition:0.3s ease all;
+    -o-transition:0.3s ease all;
+    transition:0.3s ease all;
+    cursor: pointer;
+}
+
+.alert {
+    margin-top: 30px;
+}

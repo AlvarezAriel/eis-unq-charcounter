@@ -7,5 +7,5 @@
 //= require vendors/jquery
 //= require vendors/bootstrap
 //= require vendors/lodash
-////= require angular
+//= require angular
 //= require_tree .

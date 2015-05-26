@@ -7,9 +7,20 @@
 </head>
 <body class="container-fluid">
 
-<div id="board-container" ng-app="batalla2" ng-controller="boardCtrl" class="row">
+<div id="board-container" ng-app="batalla2" ng-controller="boardCtrl" class="">
 
-  <div class="col-md-8">
+  <h2>Kata Batalla Naval 2</h2>
+
+  <div class="" id="actions-container">
+    <p>Select an action</p>
+    <select id="action_selector" ng-model="action" convert-to-number>
+      <option value="small_ship">Put small ship</option>
+      <option value="long_ship">Put large ship</option>
+      <option value="shoot">Shoot</option>
+    </select>
+  </div>
+
+  <div class="">
     <table class="board">
       <tr ng-repeat="row in game.board">
         <td ng-repeat="cell in row"
@@ -23,15 +34,9 @@
     </table>
   </div>
 
-  <div class="col-md-4">
-    <select id="action_selector" ng-model="action" convert-to-number>
-      <option value="shoot">Shoot</option>
-      <option value="small_ship">Put small ship</option>
-      <option value="long_ship">Put large ship</option>
-    </select>
-    <p id="error-text" class="bg-danger" ng-show="error">{{error}}</p>
+  <div class="alert alert-danger" role="alert" ng-show="error">
+    <p id="error-text">{{error}}</p>
   </div>
-
 </div>
 
 </body>
